@@ -1,0 +1,59 @@
+﻿@{ ViewData["Title"] = "Index"; }
+<body>
+
+    <h> Proyecto de Estructura de Datos 1 </h>
+
+
+    <header>
+        <div class="textos">
+            <h1 class="titulo">Menú Principal</h1>
+            <h3 class="subtitulo">"Asignaciones para la vacuna contra el COVID-19"</h3>
+        </div>
+        <div class="sesgoabajo"></div>
+    </header>
+
+    <section class="cards contenedor">
+
+
+
+        <h2 style="text-align:center; color:cornflowerblue">Opciones</h2>
+        <h2 style="text-align:center; color:cornflowerblue">----------------</h2>
+        <div class="content-cards">
+            <article class="card">
+                <img src="~/Imagenes/IngresarPaciente.jpg" alt="" width="300">
+                <a asp-action="IngresarPaciente" class="btn btn-outline-dark btn-lg btn-block" role="button">Ingresar nuevo paciente</a>
+            </article>
+            <article class="card">
+                <img src="~/Imagenes/CentrosDeVacunación.jpeg" alt="" width="300">
+                <a asp-action="Hospitales" class="btn btn-outline-dark btn-lg btn-block" role="button">Centros de vacunación</a>
+            </article>
+            <article class="card">
+                <img src="~/Imagenes/lista.png" alt="" width="300">
+                <a asp-action="BuscarPaciente" class="btn btn-outline-dark btn-lg btn-block" role="button">Listado de pacientes</a>
+            </article>
+
+        </div>
+    </section>
+    <h2 style="text-align:center; color:cornflowerblue">-------------------</h2>
+    <h2 style="text-align:center; color:cornflowerblue">Opciones Extra</h2>
+    <h2 style="text-align:center; color:cornflowerblue">-------------------</h2>
+    <section class="cards contenedor">
+        <div class="content-cards">
+            <article class="card">
+                <img src="~/Imagenes/PersonasVacunadas.jpg" alt="" width="300">
+                <a asp-action="MostrarEstadisticas" class="btn btn-outline-dark btn-lg btn-block" role="button">Personas vacunadas</a>
+            </article>
+            <article class="card">
+                <img src="~/Imagenes/Emulador.jpg" alt="" width="305">
+                <a asp-action="BuscarPaciente" class="btn btn-outline-dark btn-lg btn-block" role="button">Simulador</a>
+            </article>
+            <article class="card">
+                <img src="~/Imagenes/Manual.jpg" alt="" width="300">
+                <a asp-action="BuscarPaciente" class="btn btn-outline-dark btn-lg btn-block" role="button">Manual de usuario</a>
+            </article>
+        </div>
+    </section>
+
+    <h2 class="titulo-final">Es un gusto atenderle</h2>
+    <div class="sesgoabajo-unico"></div>
+</body>

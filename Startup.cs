@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+
 namespace PROYECTO_ED_01
 {
     public class Startup
@@ -50,7 +51,7 @@ namespace PROYECTO_ED_01
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=VacunaC19}/{action=Index}/{id?}");
             });
         }
     }
