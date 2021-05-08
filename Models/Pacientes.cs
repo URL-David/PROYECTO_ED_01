@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PROYECTO_ED_01.GenericosLibreria.Estruturas;
+using PROYECTO_ED_01.Clases;
 
 namespace PROYECTO_ED_01.Models
 {
@@ -20,7 +21,7 @@ namespace PROYECTO_ED_01.Models
         public int Prioridad { get; set; }
         public int Posicion { get; set; }
 
-        public int CantidadPacientes { get; set; }
+        public Estadisticas EstadisticasGeneral = new Estadisticas();
 
 
         public int CalcularPosicion(int aux)

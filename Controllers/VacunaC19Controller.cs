@@ -22,7 +22,7 @@ namespace PROYECTO_ED_01.Controllers
 
         public Estadisticas EstadisticasGeneral = new Estadisticas();
 
-
+        int CantidadPacientes;
         public ActionResult Index()
         {
             return View();
@@ -122,6 +122,12 @@ namespace PROYECTO_ED_01.Controllers
                 EstadisticasGeneral.PorcentajeVacunados = "0.00%";
             }
             return View(EstadisticasGeneral);
+        }
+        public ActionResult GuardarCant(IFormCollection collection)
+        {
+            CantidadPacientes = Convert.ToInt32(collection["EstadisticasGeneral.CantidadPersonas"]);
+
+            return View();
         }
         public ActionResult Emulador()
         {

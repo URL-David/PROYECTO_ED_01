@@ -7,7 +7,8 @@ namespace PROYECTO_ED_01.Clases
 {
     public class Estadisticas
     {
-       
+
+        public int CantidadPersonas { get; set; }
         public int Vacunados { get; set; }
         public int Enespera { get; set; }
         public string PorcentajeVacunados { get; set; }

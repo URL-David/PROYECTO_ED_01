@@ -13,16 +13,19 @@
     <section class="cards contenedor">
 
         <div class="content-cards">
+            <form asp-action="GuardarCant">
+                <div class="form-group">
+                    <label asp-for="EstadisticasGeneral.CantidadPersonas" class="control-label"></label>
+                    <input asp-for="EstadisticasGeneral.CantidadPersonas" class="form-control" min="0" max="150" required placeholder="Cantidad de Pacientes para Vacunación" />
+                    <span asp-validation-for="EstadisticasGeneral.CantidadPersonas" class="text-danger"></span>
 
-            <div class="form-group">
-                <label asp-for="CantidadPacientes" class="control-label"></label>
-                <input asp-for="CantidadPacientes" class="form-control" min="0" max="150" required placeholder="Cantidad de Pacientes para Vacunación" />
-                <span asp-validation-for="CantidadPacientes" class="text-danger"></span>
 
-                <a asp-action="Simulacion" class="btn btn-outline-dark btn-lg btn-block" role="button" style="color:cornflowerblue">Realizar Simulación</a>
 
-            </div>
-
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Realizar Simulación" class="btn btn-primary" />
+                </div>
+</form>
 
         </div>
         <section class="cards contenedor">
@@ -36,7 +39,7 @@
             </div>
         </section>
     </section>
-   
+
 
 
 
