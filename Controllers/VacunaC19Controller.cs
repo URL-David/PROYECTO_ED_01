@@ -4,17 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PROYECTO_ED_01.Clases;
 using PROYECTO_ED_01.Models;
+using PROYECTO_ED_01.GenericosLibreria.Estruturas;
 using GenericosLibreria.Estruturas;
 
 namespace PROYECTO_ED_01.Controllers
 {
     public class VacunaC19Controller : Controller
     {
-        public static ArbolAVL<Paciente> AVLDPI = new ArbolAVL<Paciente>();
-        public static ArbolAVL<Paciente> AVLNombres = new ArbolAVL<Paciente>();
-        public static ArbolAVL<Paciente> AVLApellidos = new ArbolAVL<Paciente>();
+        public static ArbolAVL<Pacientes> AVLDPI = new ArbolAVL<Pacientes>();
+        public static ArbolAVL<Pacientes> AVLNombres = new ArbolAVL<Pacientes>();
+        public static ArbolAVL<Pacientes> AVLApellidos = new ArbolAVL<Pacientes>();
+        TablaHash<Pacientes> AlamcenamientoPacientes = new TablaHash<Pacientes>();
 
         public ActionResult Index()
         {
@@ -30,8 +31,8 @@ namespace PROYECTO_ED_01.Controllers
         [HttpPost]
         public ActionResult GuardarPaciente(IFormCollection collection)
         {
-            Paciente AuxPaciente = new Paciente()
-            {
+            Pacientes AuxPaciente = new Pacientes()
+            {         
                 Nombre = collection["Nombre"],
                 Apellido = collection["Apellido"],
                 Situacion_Actual = collection["Situacion_Actual"],
@@ -42,12 +43,19 @@ namespace PROYECTO_ED_01.Controllers
                 Municipio = collection["Municipio"],
 
             };
+
+
             AuxPaciente.PresentaEnfermedad();
             AuxPaciente.CalcularPrioridad();
+
+            
+         
 
             AVLDPI.Add(AuxPaciente, AuxPaciente.BuscarDPI);
             AVLNombres.Add(AuxPaciente, AuxPaciente.BuscarNombre);
             AVLApellidos.Add(AuxPaciente, AuxPaciente.BuscarApellido);
+
+            AlamcenamientoPacientes.Añadir(AuxPaciente, AuxPaciente.ObtenerPosicion(), AuxPaciente.BuscarDPI);
 
             return View("IngresoPaciente");
 

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PROYECTO_ED_01.GenericosLibreria.Estruturas;
 
-namespace PROYECTO_ED_01.Clases
+namespace PROYECTO_ED_01.Models
 {
-    public class Paciente : IComparable
+    public class Pacientes: IComparable
     {
         public string Nombre { get; set; }
         public string Apellido { get; set; }
@@ -17,35 +18,40 @@ namespace PROYECTO_ED_01.Clases
         public string Departamento { get; set; }
         public string Municipio { get; set; }
         public int Prioridad { get; set; }
-        public string Hospital { get; set; }
         public int Posicion { get; set; }
 
-        public int ObtenerHospital()
+        public int CalcularPosicion(int aux)
+        {
+            Posicion = (Nombre.Length + Apellido.Length) + aux;
+            return Posicion;
+        }
+
+        public int ObtenerPosicion()
         {
             if (Departamento == "Chimaltenango" || Departamento == "Guatemala" || Departamento == "Sacatepéquez")
             {
-                Hospital = "Hosp. Guatemala";
-                return 1;
+                Posicion = CalcularPosicion(1);
+                return Posicion;
             }
             else if (Departamento == "Quetzaltenango" || Departamento == "Totonicapán" || Departamento == "San Marcos" || Departamento == "Huehuetenango")
             {
-                Hospital = "Hosp. Quetzaltenango";
-                return 2;
+                Posicion = CalcularPosicion(2);
+                return Posicion;
             }
             else if (Departamento == "Izabal" || Departamento == "Zacapa" || Departamento == "Chiquimula" || Departamento == "Jalapa" || Departamento == "El Progreso")
             {
-                Hospital = "Hosp. Zacapa";
-                return 3;
+                Posicion = CalcularPosicion(3);
+                return Posicion;
             }
             else if (Departamento == "Escuintla" || Departamento == "Jutiapa" || Departamento == "Santa Rosa" || Departamento == "Suchitepéquez" || Departamento == "Retalhuleu")
             {
-                Hospital = "Hosp. Escuintla";
-                return 4;
+                Posicion = CalcularPosicion(4);
+                return Posicion;
             }
             else
             {
-                Hospital = "Hosp. Petén";
-                return 5;
+                Posicion = CalcularPosicion(5);
+                return Posicion;
             }
         }
 
@@ -111,35 +117,38 @@ namespace PROYECTO_ED_01.Clases
             throw new NotImplementedException();
         }
 
-        public Comparison<Paciente> BuscarPrioridad = delegate (Paciente Paciente1, Paciente Paciente2)
+        public Comparison<Pacientes> BuscarPrioridad = delegate (Pacientes Paciente1, Pacientes Paciente2)
         {
             return Paciente1.Prioridad.CompareTo(Paciente2.Prioridad);
         };
-        public Comparison<Paciente> BuscarNombre = delegate (Paciente Paciente1, Paciente Paciente2)
+        public Comparison<Pacientes> BuscarNombre = delegate (Pacientes Paciente1, Pacientes Paciente2)
         {
             return Paciente1.Nombre.CompareTo(Paciente2.Nombre);
         };
-        public Comparison<Paciente> BuscarApellido = delegate (Paciente Paciente1, Paciente Paciente2)
+        public Comparison<Pacientes> BuscarApellido = delegate (Pacientes Paciente1, Pacientes Paciente2)
         {
             return Paciente1.Apellido.CompareTo(Paciente2.Apellido);
         };
-        public Comparison<Paciente> ConteinsNombre = delegate (Paciente Paciente1, Paciente Paciente2)
+        public Comparison<Pacientes> ConteinsNombre = delegate (Pacientes Paciente1, Pacientes Paciente2)
         {
             if (Paciente1.Nombre.Contains(Paciente2.Nombre))
                 return 0;
             else
                 return 1;
         };
-        public Comparison<Paciente> ConteinsApellido = delegate (Paciente Paciente1, Paciente Paciente2)
+        public Comparison<Pacientes> ConteinsApellido = delegate (Pacientes Paciente1, Pacientes Paciente2)
         {
             if (Paciente1.Apellido.Contains(Paciente2.Apellido))
                 return 0;
             else
                 return 1;
         };
-        public Comparison<Paciente> BuscarDPI = delegate (Paciente Paciente1, Paciente Paciente2)
+        public Comparison<Pacientes> BuscarDPI = delegate (Pacientes Paciente1, Pacientes Paciente2)
         {
             return Paciente1.DPI.CompareTo(Paciente2.DPI);
         };
+
+
+
     }
 }
