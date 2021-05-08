@@ -1,0 +1,496 @@
+﻿@model PROYECTO_ED_01.Clases.Paciente
+
+@{
+    ViewData["Title"] = "IngresarPaciente";
+}
+<body>
+    <header class="IngresarPaciente">
+        <div class="textos">
+            <h1 class="titulo">Ingresar Paciente</h1>
+            <h3 class="subtitulo">Paciente</h3>
+        </div>
+        <div class="sesgoabajo"></div>
+    </header>
+    <div class="container">
+        <h2 style="color:red">@ViewBag.Error</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="GuardarPaciente">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Nombre" class="control-label"></label>
+                        <input asp-for="Nombre" class="form-control" required placeholder="Nombre Del Paciente" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Apellido" class="control-label"></label>
+                        <input asp-for="Apellido" class="form-control" required placeholder="Apellido Del Paciente" />
+                        <span asp-validation-for="Apellido" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Situacion_Actual" class="control-label"></label>
+                        <select asp-for="Situacion_Actual" class="form-control" name="Situacion_Actual" required>
+                            <option>
+                                Trabajador de establecimientos de salud asistencial que atienden pacientes con COVID-19 (primera línea)*
+                            </option>
+
+                            <option>
+                                Trabajador de establecimiento de salud asistencial no incluidos en sub-fase 1a y comunitario de apoyo, incluyendo: comadronas, promotores voluntarios y terapeutas tradicionales
+                            </option>
+
+                            <option>
+                                Estudiantes de ciencias de la salud y afines que realizan prácticas asistenciales en establecimientos de salud
+                            </option>
+
+                            <option>
+                                Cuerpos de socorro (bomberos y paramédicos de ambulancias, incluyendo cuerpos de socorro CONRED),trabajadores de funerarias y personal que labora en instituciones de adultos mayores (asilos)
+                            </option>
+
+                            <option>
+                                Personas internadas en hogares o instituciones de adultos mayores (asilos)
+                            </option>
+
+                            <option>Trabajadores del sector salud (administrativos)</option>
+
+                            <option>
+                                Trabajadores sector educación ( incluye maestros y docentes del nivel preprimario, primario, básico, diversificado y universitario)
+                            </option>
+
+                            <option>
+                                Trabajadores sector seguridad nacional (incluye PNC, PMT, militares y personal del sistema penitenciario)
+                            </option>
+
+                            <option>
+                                Trabajadores registrados en las municipalidades y entidades que prestan servicios esenciales de electricidad, agua, recolección de basura, aduanas y migración
+                            </option>
+
+                            <option>
+                                Autoridades y demás servidores públicos del Ministerio de Educación y trabajadores de las Universidades del país
+                            </option>
+
+                            <option>
+                                Trabajadores sector justicia, (incluye jueces, personal en tribunales, fiscales, auxiliares fiscales e investigadores del Ministerio Público)
+                            </option>
+
+                            <option>Otro</option>
+
+                        </select>
+                        <span asp-validation-for="Situacion_Actual" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Enfermedad" class="control-label"></label>
+                        <select asp-for="Enfermedad" class="form-control" name="Enfermedad" required placeholder="¿Padece de alguna de las siguientes enfermedades?">
+
+                            <option>Hipertensión arterial que requiere medicamento</option>
+                            <option>diabetes mellitus</option>
+                            <option>Enfermedad pulmonar crónica</option>
+                            <option>Enfermedad renal crónica</option>
+                            <option>cardiovasculares y cerebro vasculares</option>
+                            <option>inmunosupresión (VIH, cáncer, uso de inmunosupresores)</option>
+                            <option>Obesidad</option>
+                            <option>Ninguna</option>
+
+                        </select>
+                        <span asp-validation-for="Enfermedad" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Edad" class="control-label"></label>
+                        <input asp-for="Edad" class="form-control" min="0" max="150" required placeholder="Edad Del Paciente" />
+                        <span asp-validation-for="Edad" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DPI" class="control-label">DPI o CUI</label>
+                        <input asp-for="DPI" class="form-control" min="1000000000000" max="9999999999999" required placeholder="CUI/DPI Del Paciente" />
+                        <span asp-validation-for="DPI" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Departamento" class="control-label"></label>
+                        <select asp-for="Departamento" class="form-control" name="Departamento" required>
+                            <option>Petén</option>
+                            <option>Izabal</option>
+                            <option>Alta Verapaz</option>
+                            <option>Quiché</option>
+                            <option>Huehuetenango</option>
+                            <option>Escuintla</option>
+                            <option>San Marcos</option>
+                            <option>Jutiapa</option>
+                            <option>Baja Verapaz</option>
+                            <option>Zacapa</option>
+                            <option>Suchitepéquez</option>
+                            <option>Chiquimula</option>
+                            <option>Guatemala</option>
+                            <option>Jalapa</option>
+                            <option>Chimaltenango</option>
+                            <option>Quetzaltenango</option>
+                            <option>El Progreso</option>
+                            <option>Retalhuleu</option>
+                            <option>Sololá</option>
+                            <option>Totonicapán</option>
+                            <option>Sacatepéquez</option>
+                        </select>
+                        <span asp-validation-for="Departamento" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Municipio" class="control-label"></label>
+                        <select asp-for="Municipio" class="form-control" name="Municipio" required>
+
+                            <option>Cobán</option>
+                            <option>Santa Cruz Verapaz</option>
+                            <option>San Cristóbal Verapaz</option>
+                            <option>Tactic</option>
+                            <option>Tamahú</option>
+                            <option>San Miguel Tucurú</option>
+                            <option>Panzóz</option>
+                            <option>Senahú</option>
+                            <option>San Pedro Carchá</option>
+                            <option>San Juan Chamelco</option>
+                            <option>San Agustín Lanquín</option>
+                            <option>Santa María Cahabón</option>
+                            <option>Chisec</option>
+                            <option>Chahal</option>
+                            <option>Fray Bartolomé de las Casas</option>
+                            <option>Santa Catalina La Tinta</option>
+                            <option>Raxruhá</option>
+                            <option>Salamá</option>
+                            <option>San Miguel Chicaj</option>
+                            <option>Rabinal</option>
+                            <option>Cubulco</option>
+                            <option>Granados</option>
+                            <option>Santa Cruz el Chol</option>
+                            <option>San Jerónimo</option>
+                            <option>Purulhá</option>
+                            <option>Chimaltenango</option>
+                            <option>San José Poaquil</option>
+                            <option>San Martín Jilotepeque</option>
+                            <option>San Juan Comalapa</option>
+                            <option>Santa Apolonia</option>
+                            <option>Tecpán</option>
+                            <option>Patzún</option>
+                            <option>San Miguel Pochuta</option>
+                            <option>Patzicía</option>
+                            <option>Santa Cruz Balanyá</option>
+                            <option>Acatenango</option>
+                            <option>San Pedro Yepocapa</option>
+                            <option>San Andrés Itzapa</option>
+                            <option>Parramos</option>
+                            <option>Zaragoza</option>
+                            <option>El Tejar</option>
+                            <option>Chiquimula</option>
+                            <option>Jocotán</option>
+                            <option>Esquipulas</option>
+                            <option>Camotán</option>
+                            <option>Quezaltepeque</option>
+                            <option>Olopa</option>
+                            <option>Ipala</option>
+                            <option>San Juan Hermita</option>
+                            <option>Concepción Las Minas</option>
+                            <option>San Jacinto</option>
+                            <option>San José la Arada</option>
+                            <option>Flores</option>
+                            <option>San José</option>
+                            <option>San Benito</option>
+                            <option>San Andrés</option>
+                            <option>La Libertad</option>
+                            <option>San Francisco</option>
+                            <option>Santa Ana</option>
+                            <option>Dolores</option>
+                            <option>San Luis</option>
+                            <option>Sayaxché</option>
+                            <option>Melchor de Mencos</option>
+                            <option>Poptún</option>
+                            <option>El Jícaro</option>
+                            <option>Morazán</option>
+                            <option>San Agustín Acasaguastlán</option>
+                            <option>San Antonio La Paz</option>
+                            <option>San Cristóbal Acasaguastlán</option>
+                            <option>Sanarate</option>
+                            <option>Guastatoya</option>
+                            <option>Sansare</option>
+                            <option>Santa Cruz del Quiché</option>
+                            <option>Chiché</option>
+                            <option>Chinique</option>
+                            <option>Zacualpa</option>
+                            <option>Chajul</option>
+                            <option>Santo Tomás Chichicastenango</option>
+                            <option>Patzité</option>
+                            <option>San Antonio Ilotenango</option>
+                            <option>San Pedro Jocopilas</option>
+                            <option>Cunén</option>
+                            <option>San Juan Cotzal</option>
+                            <option>Santa María Joyabaj</option>
+                            <option>Santa María Nebaj</option>
+                            <option>San Andrés Sajcabajá</option>
+                            <option>Uspantán</option>
+                            <option>Sacapulas</option>
+                            <option>San Bartolomé Jocotenango</option>
+                            <option>Canillá</option>
+                            <option>Chicamán</option>
+                            <option>Ixcán</option>
+                            <option>Pachalum</option>
+                            <option>Escuintla</option>
+                            <option>Santa Lucía Cotzumalguapa</option>
+                            <option>La Democracia</option>
+                            <option>Siquinalá</option>
+                            <option>Masagua</option>
+                            <option>Tiquisate</option>
+                            <option>La Gomera</option>
+                            <option>Guaganazapa</option>
+                            <option>San José</option>
+                            <option>Iztapa</option>
+                            <option>Palín</option>
+                            <option>San Vicente Pacaya</option>
+                            <option>Nueva Concepción</option>
+                            <option>Santa Catarina Pinula</option>
+                            <option>San José Pinula</option>
+                            <option>Guatemala</option>
+                            <option>San José del Golfo</option>
+                            <option>Palencia</option>
+                            <option>Chinautla</option>
+                            <option>San Pedro Ayampuc</option>
+                            <option>Mixco</option>
+                            <option>San Pedro Sacatapéquez</option>
+                            <option>San Juan Sacatepéquez</option>
+                            <option>Chuarrancho</option>
+                            <option>San Raymundo</option>
+                            <option>Fraijanes</option>
+                            <option>Amatitlán</option>
+                            <option>Villa Nueva</option>
+                            <option>Villa Canales</option>
+                            <option>San Miguel Petapa</option>
+                            <option>Huehuetenango</option>
+                            <option>Chiantla</option>
+                            <option>Malacatancito</option>
+                            <option>Cuilco</option>
+                            <option>Nentón</option>
+                            <option>San Pedro Necta</option>
+                            <option>Jacaltenango</option>
+                            <option>Soloma</option>
+                            <option>Ixtahuacán</option>
+                            <option>Santa Bárbara</option>
+                            <option>La Libertad</option>
+                            <option>La Democracia</option>
+                            <option>San Miguel Acatán</option>
+                            <option>San Rafael La Independencia</option>
+                            <option>Todos Santos Cuchumatán</option>
+                            <option>San Juan Atitlán</option>
+                            <option>Santa Eulalia</option>
+                            <option>San Mateo Ixtatán</option>
+                            <option>Colotenango</option>
+                            <option>San Sebastián Huehuetenango</option>
+                            <option>Tectitán</option>
+                            <option>Concepción Huista</option>
+                            <option>San Juan Ixcoy</option>
+                            <option>San Antonio Huista</option>
+                            <option>Santa Cruz Barillas</option>
+                            <option>San Sebastián Coatán</option>
+                            <option>Aguacatán</option>
+                            <option>San Rafael Petzal</option>
+                            <option>San Gaspar Ixchil</option>
+                            <option>Santiago Chimaltenango</option>
+                            <option>Santa Ana Huista</option>
+                            <option>Morales</option>
+                            <option>Los Amates</option>
+                            <option>Livingston</option>
+                            <option>El Estor</option>
+                            <option>Puerto Barrios</option>
+                            <option>Jalapa</option>
+                            <option>San Pedro Pinula</option>
+                            <option>San Luis Jilotepeque</option>
+                            <option>San Manuel Chaparrón</option>
+                            <option>San Carlos Alzatate</option>
+                            <option>Monjas</option>
+                            <option>Mataquescuintla</option>
+                            <option>Jutiapa</option>
+                            <option>El Progreso</option>
+                            <option>Santa Catarina Mita</option>
+                            <option>Agua Blanca</option>
+                            <option>Asunción Mita</option>
+                            <option>Yupiltepeque</option>
+                            <option>Atescatempa</option>
+                            <option>Jerez</option>
+                            <option>El Adelanto</option>
+                            <option>Zapotitlán</option>
+                            <option>Comapa</option>
+                            <option>Jalpatagua</option>
+                            <option>Conguaco</option>
+                            <option>Moyuta</option>
+                            <option>Pasaco</option>
+                            <option>Quesada</option>
+                            <option>Quetzaltenango</option>
+                            <option>Salcajá</option>
+                            <option>San Juan Olintepeque</option>
+                            <option>San Carlos Sija</option>
+                            <option>Sibilia</option>
+                            <option>Cabricán</option>
+                            <option>Cajolá</option>
+                            <option>San Miguel Siguilá</option>
+                            <option>San Juan Ostuncalco</option>
+                            <option>San Mateo</option>
+                            <option>Concepción Chiquirichapa</option>
+                            <option>San Martín Sacatepéquez</option>
+                            <option>Almolonga</option>
+                            <option>Cantel</option>
+                            <option>Huitán</option>
+                            <option>Zunil</option>
+                            <option>Colomba Costa Cuca</option>
+                            <option>San Francisco La Unión</option>
+                            <option>El Palmar</option>
+                            <option>Coatepeque</option>
+                            <option>Génova</option>
+                            <option>Flores Costa Cuca</option>
+                            <option>La Esperanza</option>
+                            <option>Palestina de Los Altos</option>
+                            <option>Retalhuleu</option>
+                            <option>San Sebastián</option>
+                            <option>Santa Cruz Muluá</option>
+                            <option>San Martín Zapotitlán</option>
+                            <option>San Felipe</option>
+                            <option>San Andrés Villa Seca</option>
+                            <option>Champerico</option>
+                            <option>Nuevo San Carlos</option>
+                            <option>El Asintal</option>
+                            <option>Antigua Guatemala</option>
+                            <option>Jocotenango</option>
+                            <option>Pastores</option>
+                            <option>Sumpango</option>
+                            <option>Santo Domingo Xenacoj</option>
+                            <option>Santiago Sacatepéquez</option>
+                            <option>San Bartolomé Milpas Altas</option>
+                            <option>San Lucas Sacatepéquez</option>
+                            <option>Santa Lucía Milpas Altas</option>
+                            <option>Magdalena Milpas Altas</option>
+                            <option>Santa María de Jesús</option>
+                            <option>Ciudad Vieja</option>
+                            <option>San Miguel Dueñas</option>
+                            <option>San Juan Alotenango</option>
+                            <option>San Antonio Aguas Calientes</option>
+                            <option>Santa Catarina Barahona</option>
+                            <option>San Marcos</option>
+                            <option>Ayutla</option>
+                            <option>Catarina</option>
+                            <option>Comitancillo</option>
+                            <option>Concepción Tutuapa</option>
+                            <option>El Quetzal</option>
+                            <option>El Rodeo</option>
+                            <option>El Tumblador</option>
+                            <option>Ixchiguánv</option>
+                            <option>La Reforma</option>
+                            <option>Malacatán</option>
+                            <option>Nuevo Progreso</option>
+                            <option>Ocós</option>
+                            <option>Pajapita</option>
+                            <option>Esquipulas Palo Gordo</option>
+                            <option>San Antonio Sacatepéquez</option>
+                            <option>San Cristóbal Cucho</option>
+                            <option>San José Ojetenam</option>
+                            <option>San Lorenzo</option>
+                            <option>San Miguel Ixtahuacán</option>
+                            <option>San Pablo</option>
+                            <option>San Pedro Sacatepéquez</option>
+                            <option>San Rafael Pie de la Cuesta</option>
+                            <option>Sibinal</option>
+                            <option>Sipacapa</option>
+                            <option>Tacaná</option>
+                            <option>Tajumulco</option>
+                            <option>Tejutla</option>
+                            <option>Río Blanco</option>
+                            <option>La Blanca</option>
+                            <option>Cuilapa</option>
+                            <option>Casillas Santa Rosa</option>
+                            <option>Chiquimulilla</option>
+                            <option>Guazacapán</option>
+                            <option>Nueva Santa Rosa</option>
+                            <option>Oratorio</option>
+                            <option>Pueblo Nuevo Viñas</option>
+                            <option>San Juan Tecuaco</option>
+                            <option>San Rafael Las Flores</option>
+                            <option>Santa Cruz Naranjo</option>
+                            <option>Santa María Ixhuatán</option>
+                            <option>Santa Rosa de Lima</option>
+                            <option>Taxisco</option>
+                            <option>Barberena</option>
+                            <option>Sololá</option>
+                            <option>Concepción</option>
+                            <option>Nahualá</option>
+                            <option>Panajachel</option>
+                            <option>San Andrés Semetabaj</option>
+                            <option>San Antonio Palopó</option>
+                            <option>San José Chacayá</option>
+                            <option>San Juan La Laguna</option>
+                            <option>San Lucas Tolimán</option>
+                            <option>San Marcos La Laguna</option>
+                            <option>San Pablo La Laguna</option>
+                            <option>San Pedro La Laguna</option>
+                            <option>Santa Catarina Ixtahuacán</option>
+                            <option>Santa Catarina Palopó</option>
+                            <option>Santa Clara La Laguna</option>
+                            <option>Santa Cruz La Laguna</option>
+                            <option>Santa Lucía Utatlán</option>
+                            <option>Santa María Visitación</option>
+                            <option>Santiago Atitlán</option>
+                            <option>Mazatenango</option>
+                            <option>Cuyotenango</option>
+                            <option>San Francisco Zapotitlán</option>
+                            <option>San Bernardino</option>
+                            <option>San José El Ídolo</option>
+                            <option>Santo Domingo Suchitépequez</option>
+                            <option>San Lorenzo</option>
+                            <option>Samayac</option>
+                            <option>San Pablo Jocopilas</option>
+                            <option>San Antonio Suchitépequez</option>
+                            <option>San Miguel Panán</option>
+                            <option>San Gabriel</option>
+                            <option>Chicacao</option>
+                            <option>Patulul</option>
+                            <option>Santa Bárbara</option>
+                            <option>San Juan Bautista</option>
+                            <option>Santo Tomás La Unión</option>
+                            <option>Zunilito</option>
+                            <option>Pueblo Nuevo</option>
+                            <option>Río Bravo</option>
+                            <option>Totonicapán</option>
+                            <option>San Cristóbal Totonicapán</option>
+                            <option>San Francisco El Alto</option>
+                            <option>San Andrés Xecul</option>
+                            <option>Momostenango</option>
+                            <option>Santa María Chiquimula</option>
+                            <option>Santa Lucía La Reforma</option>
+                            <option>San Bartolo</option>
+                            <option>Cabañas</option>
+                            <option>Estanzuela</option>
+                            <option>Gualán</option>
+                            <option>Huité</option>
+                            <option>La Unión</option>
+                            <option>Río Hondo</option>
+                            <option>San Jorge</option>
+                            <option>San Diego</option>
+                            <option>Teculután</option>
+                            <option>Usumatlán</option>
+                            <option>Zacapa</option>
+
+                        </select>
+                        <span asp-validation-for="Municipio" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Crear" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="sesgoabajo-unico"></div>
+    <section class="contenedorpaciente">
+        <p>
+
+        </p>
+        <a class="btn btn-outline-info btn-lg btn-block" asp-action="Index">Regresar</a>
+        <p>
+
+        </p>
+    </section>
+
+
+
+
+</body>

@@ -4,84 +4,46 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PROYECTO_ED_01.Clases;
+using PROYECTO_ED_01.Models;
 
 namespace PROYECTO_ED_01.Controllers
 {
     public class VacunaC19Controller : Controller
     {
-        // GET: VacunaC19Controller
+
+
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: VacunaC19Controller/Details/5
-        public ActionResult Details(int id)
+        // Vista Ingresar Paciente
+        public ActionResult IngresoPaciente()
         {
             return View();
         }
-
-        // GET: VacunaC19Controller/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: VacunaC19Controller/Create
+        // Guardar Paciente
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult GuardarPaciente(IFormCollection collection)
         {
-            try
+            Paciente AuxPaciente = new Paciente()
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+                Nombre = collection["Nombre"],
+                Apellido = collection["Apellido"],
+                Situacion_Actual = collection["Situacion_Actual"],
+                Enfermedad = collection["Enfermedad"],
+                Edad = Convert.ToInt32(collection["Edad"]),
+                DPI = Convert.ToInt64(collection["DPI"]),
+                Departamento = collection["Departamento"],
+                Municipio = collection["Municipio"],
 
-        // GET: VacunaC19Controller/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+            };
+            AuxPaciente.PresentaEnfermedad();
+            AuxPaciente.CalcularPrioridad();
 
-        // POST: VacunaC19Controller/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: VacunaC19Controller/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: VacunaC19Controller/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+            return View("IngresoPaciente");
+            
+        
     }
 }
