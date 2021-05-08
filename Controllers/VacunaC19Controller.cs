@@ -16,6 +16,7 @@ namespace PROYECTO_ED_01.Controllers
         public static ArbolAVL<Pacientes> AVLDPI = new ArbolAVL<Pacientes>();
         public static ArbolAVLRepetidos<Pacientes> AVLNombres = new ArbolAVLRepetidos<Pacientes>();
         public static ArbolAVLRepetidos<Pacientes> AVLApellidos = new ArbolAVLRepetidos<Pacientes>();
+        public static ArbolAVLRepetidos<Pacientes> AVLVacunados = new ArbolAVLRepetidos<Pacientes>();
         public static TablaHash<Pacientes> AlamcenamientoPacientes = new TablaHash<Pacientes>();
         public static ColaPrioridad<Pacientes> PrioridadPacientes = new ColaPrioridad<Pacientes>();
         public static ColaPrioridad<Pacientes> ColaEspera = new ColaPrioridad<Pacientes>();
@@ -154,8 +155,19 @@ namespace PROYECTO_ED_01.Controllers
         {             
             return View();
         }
-        public ActionResult Simulacion()
+        public ActionResult Simulacion(string Vacunado)
         {
+            Pacientes auxpaciente = new Pacientes();
+
+            if (Convert.ToBoolean(Vacunado) == true)
+            {
+                AVLVacunados.Add(ColaEspera.Delete(auxpaciente.BuscarPrioridad), auxpaciente.BuscarPrioridad);
+                
+            }
+            else
+            {
+                ColaEspera.Delete(auxpaciente.BuscarPrioridad);
+            }
 
             return View();
         }
