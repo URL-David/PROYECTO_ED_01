@@ -1,5 +1,6 @@
 ﻿@model PROYECTO_ED_01.Models.Pacientes
-{ ViewData["Title"] = "GEmulador"; }
+
+@{ ViewData["Title"] = "Emulador"; }
 
 <body>
 
@@ -14,14 +15,18 @@
 
         <div class="content-cards">
 
-            <div class="form-group">
-                <label asp-for="CantPacientes" class="control-label"></label>
-                <input asp-for="CantPacientes" class="form-control" min="0" max="150" required placeholder="Cantidad de Pacientes para Vacunación" />
-                <span asp-validation-for="CantPacientes" class="text-danger"></span>
+            <form>
 
-                <a asp-action="Simulacion" class="btn btn-outline-dark btn-lg btn-block" role="button" style="color:cornflowerblue">Realizar Simulación</a>
+                <div class="form-group">
 
-            </div>
+                    <label asp-for="CantPacientes" class="control-label"></label>
+                    <input asp-for="CantPacientes" value="" min="0" max="150" required />
+                    <span asp-validation-for="CantPacientes" class="text-danger"></span>
+
+                    <a asp-action="Emulador" class="btn btn-outline-dark btn-lg btn-block" role="button" style="color:cornflowerblue">Realizar Simulación</a>
+
+                </div>
+            </form>
 
 
         </div>

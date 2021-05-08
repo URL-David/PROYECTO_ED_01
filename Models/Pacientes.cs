@@ -19,6 +19,7 @@ namespace PROYECTO_ED_01.Models
         public string Municipio { get; set; }
         public int Prioridad { get; set; }
         public int Posicion { get; set; }
+        public bool Vacunado { get; set; }
 
         public int CantPacientes { get; set; }
 

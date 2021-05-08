@@ -18,9 +18,7 @@ namespace PROYECTO_ED_01.Controllers
         public static ArbolAVLRepetidos<Pacientes> AVLApellidos = new ArbolAVLRepetidos<Pacientes>();
         public static TablaHash<Pacientes> AlamcenamientoPacientes = new TablaHash<Pacientes>();
         public static ColaPrioridad<Pacientes> PrioridadPacientes = new ColaPrioridad<Pacientes>();
-
-
-        public Estadisticas EstadisticasGeneral = new Estadisticas();
+        public static Estadisticas EstadisticasGeneral = new Estadisticas();
 
 
         public ActionResult Index()
@@ -50,6 +48,12 @@ namespace PROYECTO_ED_01.Controllers
 
             };
 
+            if (AVLDPI.ExiteValor(AuxPaciente, AuxPaciente.BuscarDPI))
+            {
+                ViewBag.Error = "¡Paciente Repetido!";
+                return View("IngresarPaciente", AuxPaciente);
+            }
+
             AuxPaciente.PresentaEnfermedad();
             AuxPaciente.CalcularPrioridad();
                   
@@ -58,9 +62,7 @@ namespace PROYECTO_ED_01.Controllers
             AVLApellidos.Add(AuxPaciente, AuxPaciente.BuscarApellido);
 
             AlamcenamientoPacientes.Añadir(AuxPaciente, AuxPaciente.ObtenerPosicion(), AuxPaciente.BuscarDPI);
-
             PrioridadPacientes.Add(AuxPaciente, AuxPaciente.BuscarPrioridad);
-
 
             return View("IngresoPaciente");
 
@@ -110,6 +112,7 @@ namespace PROYECTO_ED_01.Controllers
             return View("ListaDePacientes");
         }
 
+
         public ActionResult MostrarEstadisticas()
         {
             try
@@ -123,9 +126,10 @@ namespace PROYECTO_ED_01.Controllers
             }
             return View(EstadisticasGeneral);
         }
+
+
         public ActionResult Emulador()
-        {
-           
+        {             
             return View();
         }
         public ActionResult Simulacion()
