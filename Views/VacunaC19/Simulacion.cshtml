@@ -1,5 +1,6 @@
 ﻿@model PROYECTO_ED_01.Models.Pacientes
-@{ ViewData["Title"] = "Simulacion"; }
+
+{ ViewData["Title"] = "GEmulador"; }
 
 <body>
 
@@ -14,7 +15,9 @@
 
         <div class="content-cards">
 
-
+            <dd class="col-sm-10">
+                @Html.DisplayFor(Model => Model.EstadisticasGeneral.CantidadPersonas);
+            </dd>
 
 
         </div>
