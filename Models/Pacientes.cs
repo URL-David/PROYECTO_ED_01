@@ -20,6 +20,9 @@ namespace PROYECTO_ED_01.Models
         public int Prioridad { get; set; }
         public int Posicion { get; set; }
 
+        public int CantPacientes { get; set; }
+
+
         public int CalcularPosicion(int aux)
         {
             Posicion = (Nombre.Length + Apellido.Length) + aux;

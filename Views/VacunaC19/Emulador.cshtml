@@ -1,0 +1,44 @@
+﻿@model PROYECTO_ED_01.Models.Pacientes
+{ ViewData["Title"] = "GEmulador"; }
+
+<body>
+
+
+    <header>
+        <div class="textos">
+            <h1 class="titulo">Simulador</h1>
+        </div>
+        <div class="sesgoabajo"></div>
+    </header>
+    <section class="cards contenedor">
+
+        <div class="content-cards">
+
+            <div class="form-group">
+                <label asp-for="CantPacientes" class="control-label"></label>
+                <input asp-for="CantPacientes" class="form-control" min="0" max="150" required placeholder="Cantidad de Pacientes para Vacunación" />
+                <span asp-validation-for="CantPacientes" class="text-danger"></span>
+
+                <a asp-action="Simulacion" class="btn btn-outline-dark btn-lg btn-block" role="button" style="color:cornflowerblue">Realizar Simulación</a>
+
+            </div>
+
+
+        </div>
+        <section class="cards contenedor">
+
+            <div class="content-cards">
+
+
+                <a asp-action="Index" class="btn btn-outline-dark btn-lg btn-block" role="button" style="color:cornflowerblue">Regresar</a>
+
+
+            </div>
+        </section>
+    </section>
+   
+
+
+
+</body>
+

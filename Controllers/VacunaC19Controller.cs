@@ -114,7 +114,7 @@ namespace PROYECTO_ED_01.Controllers
         {
             try
             {
-                double Porcentaje = ((EstadisticasGeneral.Enespera / EstadisticasGeneral.Vacunados) * 100);
+                double Porcentaje = ((EstadisticasGeneral.Vacunados/ EstadisticasGeneral.Enespera) * 100);
                 EstadisticasGeneral.PorcentajeVacunados = Convert.ToString(Porcentaje) + "%";
             }
             catch (Exception)
@@ -122,6 +122,16 @@ namespace PROYECTO_ED_01.Controllers
                 EstadisticasGeneral.PorcentajeVacunados = "0.00%";
             }
             return View(EstadisticasGeneral);
+        }
+        public ActionResult Emulador()
+        {
+           
+            return View();
+        }
+        public ActionResult Simulacion()
+        {
+
+            return View();
         }
         public ActionResult ManualDeUsuario()
         {
