@@ -61,7 +61,6 @@ namespace PROYECTO_ED_01.Clases
         {
             if (Situacion_Actual == "Trabajador de establecimientos de salud asistencial que atienden pacientes con COVID-19 (primera línea)*")
                 Prioridad = 1;
-
             else if (Situacion_Actual == "Trabajador de establecimiento de salud asistencial no incluidos en sub-fase 1a y comunitario de apoyo, incluyendo: comadronas, promotores voluntarios y terapeutas tradicionales")
                 Prioridad = 2;
             else if (Situacion_Actual == "Estudiantes de ciencias de la salud y afines que realizan prácticas asistenciales en establecimientos de salud")
