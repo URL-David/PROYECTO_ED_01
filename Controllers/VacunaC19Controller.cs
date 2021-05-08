@@ -169,7 +169,7 @@ namespace PROYECTO_ED_01.Controllers
             NoVacunar();
 
 
-            if (vacunado == true)
+            if (vacunado)
             {
                 EstadisticasGeneral.Vacunados++;
                 EstadisticasGeneral.Enespera--;
