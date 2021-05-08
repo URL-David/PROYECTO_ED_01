@@ -18,10 +18,8 @@ namespace PROYECTO_ED_01.Controllers
         public static ArbolAVLRepetidos<Pacientes> AVLApellidos = new ArbolAVLRepetidos<Pacientes>();
         public static TablaHash<Pacientes> AlamcenamientoPacientes = new TablaHash<Pacientes>();
         public static ColaPrioridad<Pacientes> PrioridadPacientes = new ColaPrioridad<Pacientes>();
+        public static ColaPrioridad<Pacientes> ColaEspera = new ColaPrioridad<Pacientes>();
         public static Estadisticas EstadisticasGeneral = new Estadisticas();
-
-
-        public Estadisticas EstadisticasGeneral = new Estadisticas();
 
         int CantidadPacientes;
         public ActionResult Index()
@@ -129,11 +127,28 @@ namespace PROYECTO_ED_01.Controllers
             }
             return View(EstadisticasGeneral);
         }
+
         public ActionResult GuardarCant(IFormCollection collection)
         {
             CantidadPacientes = Convert.ToInt32(collection["EstadisticasGeneral.CantidadPersonas"]);
+            Pacientes auxpaciente = new Pacientes();
 
-            return View();
+            try
+            {
+                for (int i = 0; i < CantidadPacientes; i++)
+                {
+                    ColaEspera.Add(PrioridadPacientes.Delete(auxpaciente.BuscarPrioridad), auxpaciente.BuscarPrioridad);
+
+                }
+
+                return View("Simulacion");
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = "Esta vacio";
+                return View("Emulador");
+            }
+
         }
         public ActionResult Emulador()
         {             
