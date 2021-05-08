@@ -21,6 +21,8 @@ namespace PROYECTO_ED_01.Controllers
         public static ColaPrioridad<Pacientes> PrioridadPacientes = new ColaPrioridad<Pacientes>();
         public static ColaPrioridad<Pacientes> ColaEspera = new ColaPrioridad<Pacientes>();
         public static Estadisticas EstadisticasGeneral = new Estadisticas();
+        public static bool vacunado;
+
 
         int CantidadPacientes;
         
@@ -163,11 +165,11 @@ namespace PROYECTO_ED_01.Controllers
         {
             Pacientes auxpaciente = new Pacientes();
 
-            Vacunar(auxpaciente.Vacunado);
-            NoVacunar(auxpaciente.Vacunado);
+            Vacunar();
+            NoVacunar();
 
 
-            if (auxpaciente.Vacunado == true)
+            if (vacunado == true)
             {
                 EstadisticasGeneral.Vacunados++;
                 EstadisticasGeneral.Enespera--;
@@ -180,17 +182,17 @@ namespace PROYECTO_ED_01.Controllers
 
             return View();
         }
-
-        public bool Vacunar(bool vacunar)
+        public ActionResult Vacunar()
         {
-            return vacunar == true;
-            
+            vacunado = true;
+            return View("Simulacion");
+
         }
 
-        public bool NoVacunar(bool vacunar)
+        public ActionResult NoVacunar()
         {
-
-            return vacunar == false;
+            vacunado = true;
+            return View("Simulacion");
         }
 
 
