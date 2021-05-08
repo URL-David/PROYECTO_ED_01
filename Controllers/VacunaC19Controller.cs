@@ -24,7 +24,7 @@ namespace PROYECTO_ED_01.Controllers
         public static bool vacunado;
 
 
-        int CantidadPacientes;
+        public static int CantidadPacientes;
         
         public ActionResult Index()
         {
