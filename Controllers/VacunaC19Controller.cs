@@ -136,7 +136,8 @@ namespace PROYECTO_ED_01.Controllers
         {
             CantidadPacientes = Convert.ToInt32(collection["EstadisticasGeneral.CantidadPersonas"]);
             Pacientes auxpaciente = new Pacientes();
-            
+
+            EstadisticasGeneral.Enespera = CantidadPacientes;
             try
             {
                 for (int i = 0; i < CantidadPacientes; i++)
@@ -144,7 +145,7 @@ namespace PROYECTO_ED_01.Controllers
                     ColaEspera.Add(PrioridadPacientes.Delete(auxpaciente.BuscarPrioridad), auxpaciente.BuscarPrioridad);
 
                 }
-                EstadisticasGeneral.HoraI = EstadisticasGeneral.HoraI + 1;
+                EstadisticasGeneral.HoraI =+ EstadisticasGeneral.HoraI + 1;
                 return View("Simulacion");
             }
             catch (Exception)
@@ -158,14 +159,19 @@ namespace PROYECTO_ED_01.Controllers
         {             
             return View();
         }
-        public ActionResult Simulacion(string Vacunado)
+        public ActionResult Simulacion()
         {
             Pacientes auxpaciente = new Pacientes();
 
-            if (Convert.ToBoolean(Vacunado) == true)
+            Vacunar(auxpaciente.Vacunado);
+            NoVacunar(auxpaciente.Vacunado);
+
+
+            if (auxpaciente.Vacunado == true)
             {
+                EstadisticasGeneral.Vacunados++;
+                EstadisticasGeneral.Enespera--;
                 AVLVacunados.Add(ColaEspera.Delete(auxpaciente.BuscarPrioridad), auxpaciente.BuscarPrioridad);
-                
             }
             else
             {
@@ -174,6 +180,26 @@ namespace PROYECTO_ED_01.Controllers
 
             return View();
         }
+
+        public bool Vacunar(bool vacunar)
+        {
+            return vacunar == true;
+            
+        }
+
+        public bool NoVacunar(bool vacunar)
+        {
+
+            return vacunar == false;
+        }
+
+
+
+
+
+
+
+
         public ActionResult ManualDeUsuario()
         {
             return View();
