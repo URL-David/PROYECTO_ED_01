@@ -13,9 +13,11 @@ namespace PROYECTO_ED_01.Controllers
     public class VacunaC19Controller : Controller
     {
         public static ArbolAVL<Pacientes> AVLDPI = new ArbolAVL<Pacientes>();
-        public static ArbolAVL<Pacientes> AVLNombres = new ArbolAVL<Pacientes>();
-        public static ArbolAVL<Pacientes> AVLApellidos = new ArbolAVL<Pacientes>();
+        public static ArbolAVLRepetidos<Pacientes> AVLNombres = new ArbolAVLRepetidos<Pacientes>();
+        public static ArbolAVLRepetidos<Pacientes> AVLApellidos = new ArbolAVLRepetidos<Pacientes>();
         public static TablaHash<Pacientes> AlamcenamientoPacientes = new TablaHash<Pacientes>();
+        public static ColaPrioridad<Pacientes> PrioridadPacientes = new ColaPrioridad<Pacientes>();
+
 
         public ActionResult Index()
         {
@@ -44,18 +46,16 @@ namespace PROYECTO_ED_01.Controllers
 
             };
 
-
             AuxPaciente.PresentaEnfermedad();
             AuxPaciente.CalcularPrioridad();
-
-            
-         
-
+                  
             AVLDPI.Add(AuxPaciente, AuxPaciente.BuscarDPI);
             AVLNombres.Add(AuxPaciente, AuxPaciente.BuscarNombre);
             AVLApellidos.Add(AuxPaciente, AuxPaciente.BuscarApellido);
 
             AlamcenamientoPacientes.Añadir(AuxPaciente, AuxPaciente.ObtenerPosicion(), AuxPaciente.BuscarDPI);
+
+            PrioridadPacientes.Add(AuxPaciente, AuxPaciente.BuscarPrioridad);
 
             return View("IngresoPaciente");
 
@@ -69,7 +69,7 @@ namespace PROYECTO_ED_01.Controllers
 
         public ActionResult RealizarBusqueda(string Buscar, string Texto)
         {
-            if (Texto == null)
+            if (Texto != null)
             {
                 Pacientes AuxPaciente = new Pacientes();
                 if (Buscar == "N")
