@@ -1,0 +1,45 @@
+﻿@{ ViewData["Title"] = "ManualGuia"; }
+
+<body>
+
+
+    <header class="ManualFondo">
+        <div class="textos">
+            <h1 class="titulo">Guía de usuario</h1>
+        </div>
+        <div class="sesgoabajo"></div>
+    </header>
+
+    <h1 style="text-align:center; color:cornflowerblue">Opciones</h1>
+
+
+    <section class="cards contenedor">
+
+        <div class="content-cards">
+
+            <a asp-action="GNuevoP" class="btn btn-outline-dark btn-lg btn-block" role="button">Como ingresar un nuevo paciente</a>
+            <a asp-action="GCentrosV" class="btn btn-outline-dark btn-lg btn-block" role="button">Como ver los centros de vacunación</a>
+            <a asp-action="GListaP" class="btn btn-outline-dark btn-lg btn-block" role="button">Como ver el listado de pacientes</a>
+            <a asp-action="GPersonasV" class="btn btn-outline-dark btn-lg btn-block" role="button">Como ver las personas que están vacunadas</a>
+            <a asp-action="GEmulador" class="btn btn-outline-dark btn-lg btn-block" role="button">Como utilizar el emulador</a>
+
+
+
+
+        </div>
+        <section class="cards contenedor">
+
+            <div class="content-cards">
+
+
+                <a asp-action="ManualDeUsuario" class="btn btn-outline-dark btn-lg btn-block" role="button" style="color:cornflowerblue">Regresar</a>
+
+
+            </div>
+        </section>
+    </section>
+
+
+
+
+</body>

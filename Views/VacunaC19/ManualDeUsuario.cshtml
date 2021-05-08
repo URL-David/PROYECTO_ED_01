@@ -1,0 +1,48 @@
+﻿
+@{ ViewData["Title"] = "ManualDeUsuario"; }
+
+<body>
+
+
+    <header class="ManualFondo">
+        <div class="textos">
+            <h1 class="titulo">Manual de usuario</h1>
+            <h3 class="subtitulo"></h3>
+        </div>
+        <div class="sesgoabajo"></div>
+    </header>
+    <section class="cards contenedor">
+
+
+
+        <h2 style="text-align:center; color:cornflowerblue">Opciones</h2>
+        <h2 style="text-align:center; color:cornflowerblue">----------------</h2>
+        <div class="content-cards">
+
+
+            <a asp-action="ManualInformacionG" class="btn btn-outline-dark btn-lg btn-block" role="button">Información General</a>
+
+            <a asp-action="ManualGuia" class="btn btn-outline-dark btn-lg btn-block" role="button">Guía de usuario</a>
+
+            <a asp-action="ManualBibliografia" class="btn btn-outline-dark btn-lg btn-block" role="button">Bibliografía</a>
+
+            <a asp-action="ManualCreditos" class="btn btn-outline-dark btn-lg btn-block" role="button">Créditos</a>
+
+
+
+        </div>
+        <section class="cards contenedor">
+
+            <div class="content-cards">
+
+
+                <a asp-action="Index" class="btn btn-outline-dark btn-lg btn-block" role="button" style="color:cornflowerblue">Regresar</a>
+
+
+            </div>
+        </section>
+    </section>
+
+  
+
+</body>
