@@ -15,7 +15,7 @@ namespace PROYECTO_ED_01.Controllers
         public static ArbolAVL<Pacientes> AVLDPI = new ArbolAVL<Pacientes>();
         public static ArbolAVL<Pacientes> AVLNombres = new ArbolAVL<Pacientes>();
         public static ArbolAVL<Pacientes> AVLApellidos = new ArbolAVL<Pacientes>();
-        TablaHash<Pacientes> AlamcenamientoPacientes = new TablaHash<Pacientes>();
+        public static TablaHash<Pacientes> AlamcenamientoPacientes = new TablaHash<Pacientes>();
 
         public ActionResult Index()
         {
@@ -66,11 +66,12 @@ namespace PROYECTO_ED_01.Controllers
             ViewBag.Pacientes = AVLDPI.Mostrar();
             return View();
         }
+
         public ActionResult RealizarBusqueda(string Buscar, string Texto)
         {
             if (Texto == null)
             {
-                Paciente AuxPaciente = new Paciente();
+                Pacientes AuxPaciente = new Pacientes();
                 if (Buscar == "N")
                 {
                     AuxPaciente.Nombre = Texto;
@@ -90,7 +91,7 @@ namespace PROYECTO_ED_01.Controllers
                     }
                     catch (Exception)
                     {
-                        List<Paciente> ListaError = new List<Paciente>();
+                        List<Pacientes> ListaError = new List<Pacientes>();
                         ViewBag.Pacientes = ListaError;
                         return View("ListaDePacientes");
                     }
@@ -98,7 +99,7 @@ namespace PROYECTO_ED_01.Controllers
             }
             else
             {
-                List<Paciente> ListaError = new List<Paciente>();
+                List<Pacientes> ListaError = new List<Pacientes>();
                 ViewBag.Pacientes = ListaError;
             }
             return View("ListaDePacientes");

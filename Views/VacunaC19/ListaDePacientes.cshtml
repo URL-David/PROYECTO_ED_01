@@ -1,5 +1,5 @@
-﻿@model IEnumerable<PROYECTO_ED_01.Clases.Paciente>
-@using PROYECTO_ED_01.Clases;
+﻿@model IEnumerable<PROYECTO_ED_01.Models.Pacientes>
+
 @{ ViewData["Title"] = "ListaDePacientes"; }
 
 <body>
@@ -55,7 +55,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (Paciente item in ViewBag.Pacientes)
+                @foreach (Pacientes item in ViewBag.Pacientes)
                 {
                 <tr>
                     <td>
