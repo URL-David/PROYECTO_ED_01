@@ -22,8 +22,11 @@ namespace PROYECTO_ED_01.Controllers
         public static Estadisticas EstadisticasGeneral = new Estadisticas();
 
         int CantidadPacientes;
+        
         public ActionResult Index()
         {
+            EstadisticasGeneral.HoraI = 7;
+            
             return View();
         }
 
@@ -132,7 +135,7 @@ namespace PROYECTO_ED_01.Controllers
         {
             CantidadPacientes = Convert.ToInt32(collection["EstadisticasGeneral.CantidadPersonas"]);
             Pacientes auxpaciente = new Pacientes();
-
+            
             try
             {
                 for (int i = 0; i < CantidadPacientes; i++)
@@ -140,7 +143,7 @@ namespace PROYECTO_ED_01.Controllers
                     ColaEspera.Add(PrioridadPacientes.Delete(auxpaciente.BuscarPrioridad), auxpaciente.BuscarPrioridad);
 
                 }
-
+                EstadisticasGeneral.HoraI = EstadisticasGeneral.HoraI + 1;
                 return View("Simulacion");
             }
             catch (Exception)

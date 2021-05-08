@@ -1,6 +1,6 @@
 ﻿@model PROYECTO_ED_01.Models.Pacientes
 
-@ { ViewData["Title"] = "Simulacion"; }
+@{ ViewData["Title"] = "Simulacion"; }
 
 <body>
 
@@ -15,12 +15,25 @@
 
         <div class="content-cards">
 
+            <dt class="col-sm-2">
+                Hora de la Cita
+            </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(Model => Model.EstadisticasGeneral.CantidadPersonas);
+                @Html.DisplayFor(model => model.EstadisticasGeneral.HoraI);
             </dd>
+            <section class="cards contenedor">
 
+                <div class="content-cards">
+
+
+                    <a asp-action="Vacunar" class="btn btn-outline-dark btn-lg btn-block" role="button" style="color:cornflowerblue">Vacunar</a>
+
+                    <a asp-action="NoVacunar" class="btn btn-outline-dark btn-lg btn-block" role="button" style="color:cornflowerblue">NoVacunar</a>
+                </div>
+            </section>
 
         </div>
+
         <section class="cards contenedor">
 
             <div class="content-cards">
