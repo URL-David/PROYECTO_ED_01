@@ -61,6 +61,7 @@ namespace PROYECTO_ED_01.Controllers
 
             PrioridadPacientes.Add(AuxPaciente, AuxPaciente.BuscarPrioridad);
 
+
             return View("IngresoPaciente");
 
         }
