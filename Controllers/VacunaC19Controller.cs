@@ -52,5 +52,90 @@ namespace PROYECTO_ED_01.Controllers
             return View("IngresoPaciente");
 
         }
+
+        public ActionResult ListaDePacientes()
+        {
+            ViewBag.Pacientes = AVLDPI.Mostrar();
+            return View();
+        }
+        public ActionResult RealizarBusqueda(string Buscar, string Texto)
+        {
+            if (Texto == null)
+            {
+                Paciente AuxPaciente = new Paciente();
+                if (Buscar == "N")
+                {
+                    AuxPaciente.Nombre = Texto;
+                    ViewBag.Pacientes = AVLNombres.Filtrar(AuxPaciente.BuscarNombre, AuxPaciente);
+                }
+                else if (Buscar == "A")
+                {
+                    AuxPaciente.Apellido = Texto;
+                    ViewBag.Pacientes = AVLApellidos.Filtrar(AuxPaciente.BuscarApellido, AuxPaciente);
+                }
+                else
+                {
+                    try
+                    {
+                        AuxPaciente.DPI = Convert.ToInt64(Texto);
+                        ViewBag.Pacientes = AVLNombres.Get(AuxPaciente, AuxPaciente.BuscarDPI);
+                    }
+                    catch (Exception)
+                    {
+                        List<Paciente> ListaError = new List<Paciente>();
+                        ViewBag.Pacientes = ListaError;
+                        return View("ListaDePacientes");
+                    }
+                }
+            }
+            else
+            {
+                List<Paciente> ListaError = new List<Paciente>();
+                ViewBag.Pacientes = ListaError;
+            }
+            return View("ListaDePacientes");
+        }
+
+        public ActionResult ManualDeUsuario()
+        {
+            return View();
+        }
+        public ActionResult ManualInformacionG()
+        {
+            return View();
+        }
+        public ActionResult ManualGuia()
+        {
+            return View();
+        }
+        public ActionResult ManualBibliografia()
+        {
+            return View();
+        }
+
+        public ActionResult ManualCreditos()
+        {
+            return View();
+        }
+        public ActionResult GNuevoP()
+        {
+            return View();
+        }
+        public ActionResult GCentrosV()
+        {
+            return View();
+        }
+        public ActionResult GListaP()
+        {
+            return View();
+        }
+        public ActionResult GPersonasV()
+        {
+            return View();
+        }
+        public ActionResult GEmulador()
+        {
+            return View();
+        }
     }
 }
