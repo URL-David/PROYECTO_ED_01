@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PROYECTO_ED_01.Models;
+using PROYECTO_ED_01.Clases;
 using PROYECTO_ED_01.GenericosLibreria.Estruturas;
 using GenericosLibreria.Estruturas;
 
@@ -16,6 +17,9 @@ namespace PROYECTO_ED_01.Controllers
         public static ArbolAVL<Pacientes> AVLNombres = new ArbolAVL<Pacientes>();
         public static ArbolAVL<Pacientes> AVLApellidos = new ArbolAVL<Pacientes>();
         public static TablaHash<Pacientes> AlamcenamientoPacientes = new TablaHash<Pacientes>();
+
+        public Estadisticas EstadisticasGeneral = new Estadisticas();
+
 
         public ActionResult Index()
         {
@@ -105,6 +109,19 @@ namespace PROYECTO_ED_01.Controllers
             return View("ListaDePacientes");
         }
 
+        public ActionResult MostrarEstadisticas()
+        {
+            try
+            {
+                double Porcentaje = ((EstadisticasGeneral.Enespera / EstadisticasGeneral.Vacunados) * 100);
+                EstadisticasGeneral.PorcentajeVacunados = Convert.ToString(Porcentaje) + "%";
+            }
+            catch (Exception)
+            {
+                EstadisticasGeneral.PorcentajeVacunados = "0.00%";
+            }
+            return View(EstadisticasGeneral);
+        }
         public ActionResult ManualDeUsuario()
         {
             return View();

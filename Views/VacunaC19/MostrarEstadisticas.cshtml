@@ -1,0 +1,48 @@
+﻿@model PROYECTO_ED_01.Clases.Estadisticas
+
+@{
+    ViewData["Title"] = "MostrarEstadisticas";
+}
+ 
+<body>
+    <header class="PacientesVacunados">
+        <div class="textos">
+            <h1 class="titulo">Pacientes Vacunados</h1>
+            <h3 class="subtitulo">Estadisticas</h3>
+        </div>
+        <div class="sesgoabajo"></div>
+    </header>
+
+    <div class="container">
+        <dl class="row">
+            <dt class="col-sm-2">
+                Lista de Vacunados
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Vacunados)
+            </dd>
+            <dt class="col-sm-2">
+                Lista en Espera
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Enespera)
+            </dd>
+            <dt class="col-sm-2">
+                Porcentaje Vacunados
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PorcentajeVacunados)
+            </dd>
+        </dl>
+        <section class="cards contenedor">
+
+            <div class="content-cards">
+
+
+                <a asp-action="Index" class="btn btn-outline-dark btn-lg btn-block" role="button" style="color:cornflowerblue">Regresar</a>
+
+
+            </div>
+        </section>
+    </div>
+</body>
